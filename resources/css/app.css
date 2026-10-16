@@ -1,0 +1,164 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../views';
+
+/*
+ * Brand tokens. The --site-* variables are written into <head> from the
+ * admin "Site Settings → Colours & Fonts" tab (see App\Support\Theme).
+ */
+@theme inline {
+    --color-primary: var(--site-primary);
+    --color-on-primary: var(--site-on-primary);
+    --color-accent: var(--site-accent);
+    --color-cream: var(--site-background);
+    --color-ink: var(--site-text);
+    --color-dark: var(--site-dark);
+    --color-soft: color-mix(in oklab, var(--site-primary) 9%, var(--site-background));
+    --color-accent-soft: color-mix(in oklab, var(--site-accent) 20%, var(--site-background));
+    --color-muted: color-mix(in oklab, var(--site-text) 70%, var(--site-background));
+    --color-line: color-mix(in oklab, var(--site-text) 12%, transparent);
+    --color-primary-deep: color-mix(in oklab, var(--site-primary) 80%, black);
+
+    --font-heading: var(--site-heading-font);
+    --font-sans: var(--site-body-font);
+    --radius-btn: var(--site-button-radius);
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 6rem;
+    }
+
+    body {
+        background-color: var(--color-cream);
+        color: var(--color-ink);
+        font-family: var(--font-sans);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+        font-family: var(--font-heading);
+        font-weight: 500;
+        line-height: 1.15;
+        letter-spacing: -0.01em;
+    }
+
+    [x-cloak] {
+        display: none !important;
+    }
+}
+
+@layer components {
+    .container-site {
+        @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+    }
+
+    .eyebrow {
+        @apply text-xs font-semibold tracking-[0.2em] uppercase text-primary;
+    }
+
+    .btn,
+    .btn-primary,
+    .btn-outline,
+    .btn-light {
+        @apply inline-flex items-center justify-center gap-2 px-7 py-3 text-sm font-semibold tracking-wide transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+        border-radius: var(--radius-btn);
+    }
+
+    .btn-primary {
+        @apply bg-primary text-on-primary shadow-sm hover:bg-primary-deep hover:shadow-md;
+    }
+
+    .btn-outline {
+        @apply border border-current text-primary hover:bg-primary hover:text-on-primary hover:border-primary;
+    }
+
+    .btn-light {
+        @apply bg-white text-ink hover:bg-cream;
+    }
+
+    .card {
+        @apply rounded-2xl bg-white shadow-[0_1px_2px_rgb(0_0_0/0.04),0_8px_30px_-12px_rgb(0_0_0/0.12)];
+    }
+
+    .form-input {
+        @apply w-full rounded-xl border border-line bg-white px-4 py-3 text-ink placeholder:text-muted/60 transition focus:border-primary focus:ring-4 focus:ring-primary/15 focus:outline-none;
+    }
+
+    .form-label {
+        @apply mb-1.5 block text-sm font-semibold text-ink;
+    }
+
+    /* Rich text authored in the admin */
+    .prose-site {
+        --tw-prose-body: var(--color-ink);
+        --tw-prose-headings: var(--color-ink);
+        --tw-prose-links: var(--color-primary);
+        --tw-prose-bold: var(--color-ink);
+        --tw-prose-bullets: var(--color-accent);
+        --tw-prose-counters: var(--color-primary);
+        --tw-prose-quotes: var(--color-ink);
+        --tw-prose-quote-borders: var(--color-accent);
+        --tw-prose-hr: var(--color-line);
+    }
+
+    .prose-site :where(h2, h3) {
+        font-family: var(--font-heading);
+        font-weight: 500;
+    }
+
+    .prose-site :where(img) {
+        border-radius: 1rem;
+    }
+
+    /* Section background tones (Appearance → Background in the page builder) */
+    .tone-white {
+        background-color: #fff;
+    }
+
+    .tone-soft {
+        background-color: var(--color-soft);
+    }
+
+    .tone-accent {
+        background-color: var(--color-accent-soft);
+    }
+
+    .tone-dark {
+        background-color: var(--color-dark);
+        color: #fff;
+        --color-ink: #fff;
+        --color-muted: rgb(255 255 255 / 0.75);
+        --color-line: rgb(255 255 255 / 0.18);
+    }
+
+    .tone-dark .prose-site {
+        --tw-prose-body: rgb(255 255 255 / 0.85);
+        --tw-prose-headings: #fff;
+        --tw-prose-bold: #fff;
+        --tw-prose-links: #fff;
+        --tw-prose-quotes: #fff;
+    }
+
+    .tone-dark .eyebrow {
+        color: var(--color-accent);
+    }
+
+    .tone-dark .card {
+        color: var(--site-text);
+        --color-ink: var(--site-text);
+        --color-muted: color-mix(in oklab, var(--site-text) 70%, white);
+    }
+
+    .no-scrollbar {
+        scrollbar-width: none;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+}

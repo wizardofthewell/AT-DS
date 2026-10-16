@@ -153,7 +153,7 @@ class ManageSiteSettings extends Page
                                             ->label('Show announcement bar')
                                             ->default(true),
                                         TextInput::make('topbar.text')
-                                            ->placeholder('Serving St. John\'s, CBS & the Avalon Peninsula'),
+                                            ->placeholder('Serving Greater Victoria & Southern Vancouver Island'),
                                         TextInput::make('topbar.link_label')->label('Link label')->placeholder('Book a free consult'),
                                         TextInput::make('topbar.link_url')->label('Link URL')->placeholder('/contact'),
                                     ])
@@ -207,7 +207,7 @@ class ManageSiteSettings extends Page
                                         TextInput::make('contact.phone')->tel(),
                                         TextInput::make('contact.service_area')
                                             ->label('Service area')
-                                            ->placeholder('St. John\'s, CBS & surrounding areas'),
+                                            ->placeholder('Victoria, Saanich, Langford & surrounding areas'),
                                         TextInput::make('contact.address')
                                             ->label('Mailing address (optional)'),
                                         TextInput::make('contact.hours')

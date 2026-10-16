@@ -34,7 +34,7 @@ class PageBlocks
         return [
             static::block('hero', 'Hero Banner', 'heroicon-o-sparkles', [
                 TextInput::make('eyebrow')
-                    ->helperText('Small line above the heading, e.g. "Serving St. John\'s & Surrounding Areas".'),
+                    ->helperText('Small line above the heading, e.g. "Serving Greater Victoria & Surrounding Areas".'),
                 TextInput::make('heading')->required(),
                 Textarea::make('subheading')->rows(2),
                 static::image('image', 'Background image')

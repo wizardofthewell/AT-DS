@@ -38,7 +38,7 @@ class ServiceForm
                                 ->unique(ignoreRecord: true)
                                 ->prefix(url('/services').'/'),
                             TextInput::make('tagline')
-                                ->placeholder('In-person support across the Avalon')
+                                ->placeholder('In-person support across Greater Victoria')
                                 ->helperText('Short line shown on the service card.')
                                 ->columnSpanFull(),
                             Textarea::make('summary')

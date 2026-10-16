@@ -41,7 +41,7 @@ class StarterContentSeeder extends Seeder
             ],
             'topbar' => [
                 'enabled' => true,
-                'text' => 'Serving St. John\'s & the Avalon Peninsula — virtual support anywhere',
+                'text' => 'Serving Greater Victoria & Vancouver Island — virtual support anywhere',
                 'link_label' => 'Book a free consult',
                 'link_url' => '/contact',
             ],
@@ -65,8 +65,8 @@ class StarterContentSeeder extends Seeder
             ],
             'contact' => [
                 'email' => 'hello@example.com',
-                'phone' => '(709) 555-0123',
-                'service_area' => 'St. John\'s, CBS & surrounding areas',
+                'phone' => '(250) 555-0123',
+                'service_area' => 'Victoria, Saanich, Langford & surrounding areas',
                 'hours' => 'On call 24/7 for clients · Inquiries answered within 1 business day',
                 'thank_you' => 'Thank you for reaching out! I\'ll be in touch within one business day.',
             ],
@@ -218,7 +218,7 @@ class StarterContentSeeder extends Seeder
             ['Will a doula replace my partner?', '<p>Not at all! I support your partner too — suggesting ways they can help, giving them a break when they need one, and making sure they feel included and confident.</p>', 'General'],
             ['When should I book a doula?', '<p>Many families book in the second trimester, but it\'s never too early (or usually too late) to reach out. I take a limited number of clients each month, so earlier is better.</p>', 'Booking'],
             ['Do you support hospital births, home births and caesareans?', '<p>Yes. I support all kinds of births and all kinds of families, including planned and unplanned caesareans, VBACs, and medicated or unmedicated births.</p>', 'General'],
-            ['What areas do you serve?', '<p>I offer in-person support across St. John\'s and the surrounding areas, and virtual support anywhere. Reach out if you\'re not sure whether you\'re in my area.</p>', 'Booking'],
+            ['What areas do you serve?', '<p>I offer in-person support across Greater Victoria and the surrounding areas, and virtual support anywhere. Reach out if you\'re not sure whether you\'re in my area.</p>', 'Booking'],
             ['Are doula services covered by insurance?', '<p>Some workplace health plans cover doula services. I\'m happy to provide receipts you can submit — check with your provider to see what\'s included.</p>', 'Booking'],
         ];
 
@@ -264,7 +264,7 @@ class StarterContentSeeder extends Seeder
                 'show_in_nav' => false,
                 'blocks' => [
                     ['type' => 'hero', 'data' => [
-                        'eyebrow' => 'Birth & Postpartum Doula · St. John\'s, NL',
+                        'eyebrow' => 'Birth & Postpartum Doula · Victoria, BC',
                         'heading' => 'Calm, confident support for your birth journey',
                         'subheading' => 'Compassionate, evidence-informed care so you feel informed, steady and truly supported — from pregnancy through the fourth trimester.',
                         'height' => 'large',

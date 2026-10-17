@@ -6,6 +6,9 @@
     <div class="container-site grid gap-12 py-16 md:grid-cols-12">
         <div class="md:col-span-5">
             <x-logo light />
+            @if($site->motto())
+                <p class="mt-5 font-heading text-2xl italic text-accent">{{ $site->motto() }}</p>
+            @endif
             @if($site->get('footer.about'))
                 <p class="mt-5 max-w-sm leading-relaxed text-muted">{{ $site->get('footer.about') }}</p>
             @endif

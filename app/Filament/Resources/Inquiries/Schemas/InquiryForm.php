@@ -22,7 +22,7 @@ class InquiryForm
                         TextInput::make('name')->required(),
                         TextInput::make('email')->email()->required(),
                         TextInput::make('phone')->tel(),
-                        DatePicker::make('due_date')->label('Due date'),
+                        DatePicker::make('due_date')->label("Due date / baby's birthday"),
                         TextInput::make('service_interest')->label('Interested in')->columnSpanFull(),
                         Textarea::make('message')->rows(6)->required()->columnSpanFull(),
                     ])

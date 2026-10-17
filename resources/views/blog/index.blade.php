@@ -5,7 +5,7 @@
 @section('content')
     <section class="bg-soft py-16 text-center sm:py-20">
         <div class="container-site">
-            <x-section-heading eyebrow="Journal" heading="Blog & Resources" intro="Thoughts, tips and gentle guidance for pregnancy, birth and the fourth trimester." class="!mb-0" />
+            <x-section-heading eyebrow="Journal" heading="Blog & Resources" intro="Thoughts, tips and gentle guidance for the fourth trimester and life with a new baby." class="!mb-0" />
         </div>
     </section>
 

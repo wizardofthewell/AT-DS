@@ -33,7 +33,7 @@
         </div>
         @if($askDueDate)
             <div>
-                <label for="cf-due" class="form-label">Due date <span class="font-normal text-muted">(if expecting)</span></label>
+                <label for="cf-due" class="form-label">Due date or baby's birthday <span class="font-normal text-muted">(optional)</span></label>
                 <input id="cf-due" type="date" name="due_date" value="{{ old('due_date') }}" class="form-input">
                 @error('due_date') <p class="mt-1 text-sm text-red-700">{{ $message }}</p> @enderror
             </div>

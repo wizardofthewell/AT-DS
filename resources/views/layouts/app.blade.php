@@ -1,10 +1,11 @@
 @php
     $siteName = $site->name();
     $pageTitle = trim($__env->yieldContent('title'));
-    $fullTitle = $pageTitle ? $pageTitle.' | '.$siteName : $siteName.($site->get('branding.tagline') ? ' | '.$site->get('branding.tagline') : '');
+    $titleSuffix = $site->motto() ?: $site->get('branding.tagline');
+    $fullTitle = $pageTitle ? $pageTitle.' | '.$siteName : $siteName.($titleSuffix ? ' | '.$titleSuffix : '');
     $description = trim($__env->yieldContent('meta_description')) ?: $site->get('seo.description', '');
     $shareImage = trim($__env->yieldContent('share_image')) ?: $site->image($site->get('seo.share_image'));
-    $favicon = $site->image($site->get('branding.favicon'));
+    $favicon = $site->image($site->get('branding.favicon')) ?? asset('favicon.svg');
     $gaId = $site->get('seo.google_analytics_id');
 @endphp
 <!DOCTYPE html>

@@ -8,32 +8,32 @@ use Illuminate\Support\Str;
 class Theme
 {
     public const DEFAULTS = [
-        'primary' => '#6f7f63',
-        'accent' => '#c9937e',
-        'background' => '#faf6f1',
-        'text' => '#3b3430',
-        'dark' => '#2f3a2c',
+        'primary' => '#66705a',
+        'accent' => '#b39b7c',
+        'background' => '#f5f2ec',
+        'text' => '#322f2a',
+        'dark' => '#2c312a',
         'heading_font' => 'Cormorant Garamond',
         'body_font' => 'Nunito Sans',
         'button_shape' => 'pill',
     ];
 
     public const PRESETS = [
+        'harbourstone' => [
+            'label' => 'Harbourstone (moss, driftwood & linen)',
+            'colors' => ['primary' => '#66705a', 'accent' => '#b39b7c', 'background' => '#f5f2ec', 'text' => '#322f2a', 'dark' => '#2c312a'],
+        ],
+        'seaglass' => [
+            'label' => 'Sea Glass & Stone',
+            'colors' => ['primary' => '#5b716c', 'accent' => '#bfae93', 'background' => '#f3f2ee', 'text' => '#2f3332', 'dark' => '#28322f'],
+        ],
+        'cedar' => [
+            'label' => 'Cedar & Clay',
+            'colors' => ['primary' => '#7a6350', 'accent' => '#b98e6c', 'background' => '#f7f2ec', 'text' => '#352d27', 'dark' => '#33291f'],
+        ],
         'sage' => [
             'label' => 'Sage & Blush',
             'colors' => ['primary' => '#6f7f63', 'accent' => '#c9937e', 'background' => '#faf6f1', 'text' => '#3b3430', 'dark' => '#2f3a2c'],
-        ],
-        'terracotta' => [
-            'label' => 'Terracotta & Sand',
-            'colors' => ['primary' => '#a8603f', 'accent' => '#d9b48f', 'background' => '#fbf5ef', 'text' => '#3a2e28', 'dark' => '#3e2a22'],
-        ],
-        'lavender' => [
-            'label' => 'Lavender & Rose',
-            'colors' => ['primary' => '#7d6b91', 'accent' => '#d7a9a0', 'background' => '#f8f5f9', 'text' => '#352f3b', 'dark' => '#2e2838'],
-        ],
-        'coastal' => [
-            'label' => 'Coastal Blue',
-            'colors' => ['primary' => '#4f7a82', 'accent' => '#d8a47f', 'background' => '#f5f7f6', 'text' => '#2d3638', 'dark' => '#22343a'],
         ],
         'neutral' => [
             'label' => 'Warm Neutral',

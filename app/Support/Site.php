@@ -24,6 +24,19 @@ class Site
     }
 
     /**
+     * The (usually shorter) name shown in the header when no logo image is set.
+     */
+    public function logoText(): string
+    {
+        return $this->get('branding.logo_text', $this->name());
+    }
+
+    public function motto(): string
+    {
+        return (string) $this->get('branding.motto', '');
+    }
+
+    /**
      * Render rich editor content (HTML string or TipTap JSON) and fill placeholders.
      */
     public function html(mixed $content): string
@@ -42,8 +55,8 @@ class Site
     public function placeholders(?string $text): string
     {
         return str_replace(
-            ['{year}', '{name}'],
-            [now()->year, $this->name()],
+            ['{year}', '{name}', '{motto}'],
+            [now()->year, $this->name(), $this->motto()],
             (string) $text,
         );
     }

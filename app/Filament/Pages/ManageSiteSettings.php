@@ -67,10 +67,19 @@ class ManageSiteSettings extends Page
                                     ->schema([
                                         TextInput::make('branding.site_name')
                                             ->label('Business name')
-                                            ->placeholder('Aubri Porter'),
+                                            ->placeholder('Harbourstone Postpartum Support')
+                                            ->helperText('Used in browser tabs, emails and the footer.'),
+                                        TextInput::make('branding.motto')
+                                            ->label('Motto')
+                                            ->placeholder('Strong Foundations for New Beginnings')
+                                            ->helperText('Shown in the footer. Type {motto} in any heading to reuse it.'),
+                                        TextInput::make('branding.logo_text')
+                                            ->label('Header name')
+                                            ->placeholder('Harbourstone')
+                                            ->helperText('Shorter name for the header when there is no logo. Defaults to the business name.'),
                                         TextInput::make('branding.tagline')
-                                            ->placeholder('Birth & Postpartum Doula')
-                                            ->helperText('Shown under the name when there is no logo.'),
+                                            ->placeholder('Postpartum Support')
+                                            ->helperText('Small line under the header name when there is no logo.'),
                                         FileUpload::make('branding.logo')
                                             ->label('Logo')
                                             ->image()
@@ -255,8 +264,8 @@ class ManageSiteSettings extends Page
                                             ->label('Land acknowledgement or extra note (optional)')
                                             ->rows(3),
                                         TextInput::make('footer.copyright')
-                                            ->placeholder('© {year} Aubri Porter Doula Services')
-                                            ->helperText('{year} becomes the current year.'),
+                                            ->placeholder('© {year} Harbourstone Postpartum Support')
+                                            ->helperText('{year} becomes the current year, {name} the business name.'),
                                     ]),
                             ]),
 

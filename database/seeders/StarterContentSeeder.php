@@ -33,15 +33,17 @@ class StarterContentSeeder extends Seeder
     {
         $defaults = [
             'branding' => [
-                'site_name' => 'Aubri Porter',
-                'tagline' => 'Birth & Postpartum Doula',
+                'site_name' => 'Harbourstone Postpartum Support',
+                'logo_text' => 'Harbourstone',
+                'tagline' => 'Postpartum Support',
+                'motto' => 'Strong Foundations for New Beginnings',
             ],
             'theme' => [
-                'preset' => 'sage',
+                'preset' => 'harbourstone',
             ],
             'topbar' => [
                 'enabled' => true,
-                'text' => 'Serving Greater Victoria & Vancouver Island — virtual support anywhere',
+                'text' => 'In-home postpartum support across Greater Victoria & Vancouver Island',
                 'link_label' => 'Book a free consult',
                 'link_url' => '/contact',
             ],
@@ -49,11 +51,10 @@ class StarterContentSeeder extends Seeder
                 'items' => [
                     ['label' => 'Home', 'url' => '/', 'external' => false, 'children' => []],
                     ['label' => 'About', 'url' => '/about', 'external' => false, 'children' => []],
-                    ['label' => 'Services', 'url' => '/services', 'external' => false, 'children' => [
-                        ['label' => 'Birth Doula Support', 'url' => '/services/birth-doula-support'],
-                        ['label' => 'Postpartum Support', 'url' => '/services/postpartum-support'],
-                        ['label' => 'Childbirth Education', 'url' => '/services/childbirth-education'],
-                        ['label' => 'Virtual Doula Support', 'url' => '/services/virtual-doula-support'],
+                    ['label' => 'Support', 'url' => '/services', 'external' => false, 'children' => [
+                        ['label' => 'In-Home Daytime Support', 'url' => '/services/in-home-daytime-support'],
+                        ['label' => 'Overnight Support', 'url' => '/services/overnight-support'],
+                        ['label' => 'Postpartum Planning', 'url' => '/services/postpartum-planning'],
                     ]],
                     ['label' => 'FAQ', 'url' => '/faq', 'external' => false, 'children' => []],
                     ['label' => 'Blog', 'url' => '/blog', 'external' => false, 'children' => []],
@@ -67,7 +68,7 @@ class StarterContentSeeder extends Seeder
                 'email' => 'hello@example.com',
                 'phone' => '(250) 555-0123',
                 'service_area' => 'Victoria, Saanich, Langford & surrounding areas',
-                'hours' => 'On call 24/7 for clients · Inquiries answered within 1 business day',
+                'hours' => 'Daytime & overnight visits · Inquiries answered within 1 business day',
                 'thank_you' => 'Thank you for reaching out! I\'ll be in touch within one business day.',
             ],
             'social' => [
@@ -75,11 +76,11 @@ class StarterContentSeeder extends Seeder
                 'facebook' => 'https://facebook.com/',
             ],
             'footer' => [
-                'about' => 'Compassionate, evidence-informed doula support for pregnancy, birth and the early weeks of parenthood.',
-                'copyright' => '© {year} Aubri Porter Doula Services. All rights reserved.',
+                'about' => 'Calm, practical, in-home care for new parents in the weeks after baby arrives — so you can rest, heal and settle in with confidence.',
+                'copyright' => '© {year} {name}. All rights reserved.',
             ],
             'seo' => [
-                'description' => 'Aubri Porter is a birth and postpartum doula offering calm, compassionate support for families through pregnancy, birth and the fourth trimester.',
+                'description' => 'Harbourstone Postpartum Support offers in-home daytime and overnight care for new families across Greater Victoria, BC. Strong foundations for new beginnings.',
             ],
         ];
 
@@ -97,78 +98,59 @@ class StarterContentSeeder extends Seeder
     {
         $services = [
             [
-                'slug' => 'birth-doula-support',
-                'title' => 'Birth Doula Support',
-                'tagline' => 'In-person support for your birth',
-                'icon' => 'heart',
-                'summary' => 'Continuous physical, emotional and informational support from late pregnancy through the first hours after birth — so you feel calm, informed and cared for.',
-                'price_label' => 'Packages from $1,100',
+                'slug' => 'in-home-daytime-support',
+                'title' => 'In-Home Daytime Support',
+                'tagline' => 'Rest, recover and find your rhythm',
+                'icon' => 'home',
+                'summary' => 'Hands-on help at home in the weeks after baby arrives — feeding support, newborn care, a warm meal and time for you to rest and heal.',
+                'price_label' => 'From $40 / hour',
                 'button_label' => 'Book a Free Consult',
                 'button_url' => '/contact',
                 'features' => [
-                    'Free initial consultation',
-                    'Two prenatal visits',
-                    'Personalized birth preferences',
-                    'On call 24/7 from 37 weeks',
-                    'Continuous labour support',
-                    'Postpartum check-in visit',
-                ],
-                'description' => '<p>Whether this is your first baby or your fourth, a hospital birth, home birth or planned caesarean, you deserve to feel supported. As your birth doula I\'ll get to know you, your partner and your hopes for the day, and I\'ll be by your side from active labour until your little one is settled.</p><h2>What support looks like</h2><p>Comfort measures and positioning, calming breathing and visualization, help understanding your options, and steady reassurance for you <em>and</em> your partner. I don\'t replace your medical team — I help you feel confident working with them.</p><h2>After the birth</h2><p>I\'ll stay for the first feed and the golden hour, then visit you at home in the days that follow to talk through your birth story and answer any questions.</p>',
-            ],
-            [
-                'slug' => 'postpartum-support',
-                'title' => 'Postpartum Support',
-                'tagline' => 'Care for the fourth trimester',
-                'icon' => 'home',
-                'summary' => 'Gentle, practical help at home in the weeks after birth — feeding support, newborn care, rest for you, and a listening ear when you need it most.',
-                'price_label' => 'From $40 / hour',
-                'button_label' => 'Ask About Availability',
-                'button_url' => '/contact',
-                'features' => [
-                    'Daytime or overnight visits',
-                    'Feeding & newborn care support',
+                    'Feeding support (breast, chest or bottle)',
+                    'Newborn care & soothing',
+                    'Time for you to shower, nap or eat',
                     'Light meal prep & tidying',
                     'Sibling & partner support',
                     'Emotional check-ins',
-                    'Local resource referrals',
                 ],
-                'description' => '<p>The early weeks with a new baby are beautiful, exhausting and often overwhelming. Postpartum doula support gives you a calm, experienced person in your home so you can rest, heal and find your feet as a family.</p><p>Every family is different, so visits are flexible — a few hours a week or several visits while you recover.</p>',
+                'description' => '<p>The early weeks with a new baby are tender, exhausting and often overwhelming. Daytime support gives you a calm, experienced person in your home so you can rest, heal and find your feet as a family.</p><h2>What a visit looks like</h2><p>Every visit is shaped around what you need that day — help with feeding, a chance to sleep while baby is cared for, a warm meal, folded laundry, or simply someone to talk through how you\'re feeling.</p><p>Visits are typically three to four hours, as often as feels right for your family.</p>',
             ],
             [
-                'slug' => 'childbirth-education',
-                'title' => 'Childbirth Education',
-                'tagline' => 'Private or small-group classes',
-                'icon' => 'academic-cap',
-                'summary' => 'Prepare for labour with confidence. Learn what to expect, comfort techniques, and how your partner can help — in a relaxed, judgement-free setting.',
-                'price_label' => '$250 per couple',
-                'button_label' => 'Join the Next Class',
+                'slug' => 'overnight-support',
+                'title' => 'Overnight Support',
+                'tagline' => 'Restful nights for the whole family',
+                'icon' => 'moon',
+                'summary' => 'Overnight care so you can get the sleep your body needs to recover, knowing baby is in gentle, experienced hands.',
+                'price_label' => 'From $45 / hour',
+                'button_label' => 'Ask About Availability',
                 'button_url' => '/contact',
                 'features' => [
-                    'Stages of labour explained',
-                    'Comfort & coping techniques',
-                    'Partner support skills',
-                    'Medical options & interventions',
-                    'Newborn & feeding basics',
-                    'Take-home resource guide',
+                    'Baby care through the night',
+                    'Feeding support or bottle feeds',
+                    'Gentle, responsive settling',
+                    'Bottle & pump part cleaning',
+                    'Morning handover & notes',
                 ],
-                'description' => '<p>Knowledge is one of the best tools for a positive birth. These classes walk you through labour and birth step by step, with lots of hands-on practice and plenty of time for questions.</p>',
+                'description' => '<p>Sleep is one of the foundations of recovery. With overnight support I care for your baby through the night — bringing baby to you for feeds or giving bottles, settling, changing and soothing — so you can wake up rested.</p><p>Overnight shifts are usually eight to ten hours and can be booked a few nights a week or for a stretch while you recover.</p>',
             ],
             [
-                'slug' => 'virtual-doula-support',
-                'title' => 'Virtual Doula Support',
-                'tagline' => 'Support from anywhere',
-                'icon' => 'video-camera',
-                'summary' => 'Not local? Video sessions, text support and birth-planning guidance wherever you are.',
-                'price_label' => 'From $300',
-                'button_label' => 'Learn More',
+                'slug' => 'postpartum-planning',
+                'title' => 'Postpartum Planning',
+                'tagline' => 'Prepare for the fourth trimester',
+                'icon' => 'book-open',
+                'summary' => 'A relaxed session before baby arrives to build your postpartum plan — support, meals, recovery, sleep and local resources.',
+                'price_label' => '$150 per session',
+                'button_label' => 'Book a Session',
                 'button_url' => '/contact',
                 'features' => [
-                    'Video prenatal sessions',
-                    'Text & phone support',
-                    'Birth preferences review',
-                    'Postpartum planning',
+                    'Personalized postpartum plan',
+                    'Recovery & rest planning',
+                    'Feeding preparation',
+                    'Meal & household planning',
+                    'Local resource list',
                 ],
-                'description' => '<p>Virtual support is a great option if you live outside my service area, are planning a birth where in-person support isn\'t possible, or simply want guidance and reassurance through pregnancy.</p>',
+                'description' => '<p>So much preparation focuses on the birth, and so little on the weeks that follow. Together we\'ll build a simple, realistic plan for your fourth trimester so you feel ready for life at home with your new baby.</p>',
             ],
         ];
 
@@ -194,10 +176,10 @@ class StarterContentSeeder extends Seeder
         }
 
         $quotes = [
-            ['birth-doula-support', 'Sample review — replace me', 'Birth doula client', 'Having Aubri with us made all the difference. She was calm when we weren\'t, knew exactly what to say, and helped my partner feel like part of the team. We felt so supported from start to finish.'],
-            ['postpartum-support', 'Sample review — replace me', 'Postpartum client', 'Those first weeks would have been so much harder without her. I finally got some sleep, felt confident feeding, and always had someone to ask when I was unsure.'],
-            ['childbirth-education', 'Sample review — replace me', 'Childbirth class graduates', 'The class was relaxed, practical and actually fun. We walked into the hospital feeling prepared instead of scared.'],
-            ['birth-doula-support', 'Sample review — replace me', 'Second-time parents', 'After a difficult first birth, I was nervous. Aubri helped us plan, heal and prepare — and this time it was the calm, empowering experience I had hoped for.'],
+            ['in-home-daytime-support', 'Sample review — replace me', 'First-time parents', 'Those first weeks would have been so much harder without Aubri. I finally got some rest, felt confident feeding, and always had someone to ask when I was unsure.'],
+            ['overnight-support', 'Sample review — replace me', 'Parents of twins', 'Overnight support gave us our sanity back. Waking up rested made us better parents during the day — we can\'t recommend it enough.'],
+            ['postpartum-planning', 'Sample review — replace me', 'Expecting their second', 'Planning our postpartum this time made such a difference. We had meals, help and a plan in place, and it felt so much calmer.'],
+            ['in-home-daytime-support', 'Sample review — replace me', 'Postpartum client', 'Aubri walked into our home and everything felt steadier. Warm, practical and never judgemental — exactly what we needed.'],
         ];
 
         foreach ($quotes as $i => [$slug, $author, $context, $quote]) {
@@ -214,12 +196,13 @@ class StarterContentSeeder extends Seeder
     protected function faqs(): void
     {
         $faqs = [
-            ['What does a doula do?', '<p>A doula provides continuous emotional, physical and informational support before, during and after birth. I help with comfort measures, explain your options, support your partner, and help you feel calm and confident. Doulas don\'t perform medical tasks — I work alongside your doctor or midwife.</p>', 'General'],
-            ['Will a doula replace my partner?', '<p>Not at all! I support your partner too — suggesting ways they can help, giving them a break when they need one, and making sure they feel included and confident.</p>', 'General'],
-            ['When should I book a doula?', '<p>Many families book in the second trimester, but it\'s never too early (or usually too late) to reach out. I take a limited number of clients each month, so earlier is better.</p>', 'Booking'],
-            ['Do you support hospital births, home births and caesareans?', '<p>Yes. I support all kinds of births and all kinds of families, including planned and unplanned caesareans, VBACs, and medicated or unmedicated births.</p>', 'General'],
-            ['What areas do you serve?', '<p>I offer in-person support across Greater Victoria and the surrounding areas, and virtual support anywhere. Reach out if you\'re not sure whether you\'re in my area.</p>', 'Booking'],
-            ['Are doula services covered by insurance?', '<p>Some workplace health plans cover doula services. I\'m happy to provide receipts you can submit — check with your provider to see what\'s included.</p>', 'Booking'],
+            ['What is postpartum support?', '<p>Postpartum support is non-medical, in-home care for you and your family in the weeks after your baby arrives. I help with feeding, newborn care, rest, meals and household tasks, and offer emotional support and reassurance as you recover and adjust.</p>', 'General'],
+            ['What does a typical visit look like?', '<p>Every visit is different and shaped around what you need that day. It might be holding baby while you nap, helping with a feed, preparing a meal, folding laundry, or talking through how you\'re feeling.</p>', 'General'],
+            ['Do you help with feeding?', '<p>Yes — I support all feeding journeys, whether you\'re breastfeeding, chestfeeding, pumping, bottle feeding or a combination. If you need clinical lactation help, I\'ll connect you with a trusted local lactation consultant.</p>', 'General'],
+            ['Do you provide medical care?', '<p>No. My support is non-medical. I work alongside your midwife, doctor and public health nurse, and I\'ll always encourage you to reach out to them with any medical concerns.</p>', 'General'],
+            ['When should I book?', '<p>Many families book during pregnancy so support is ready when baby arrives, but you\'re always welcome to reach out after the birth too. I take a limited number of families at a time, so earlier is better.</p>', 'Booking'],
+            ['What areas do you serve?', '<p>I offer in-home support across Greater Victoria and the surrounding areas. Reach out if you\'re not sure whether you\'re in my area.</p>', 'Booking'],
+            ['Is postpartum support covered by insurance?', '<p>Some workplace health plans cover postpartum support. I\'m happy to provide receipts you can submit — check with your provider to see what\'s included.</p>', 'Booking'],
         ];
 
         foreach ($faqs as $i => [$question, $answer, $category]) {
@@ -233,10 +216,10 @@ class StarterContentSeeder extends Seeder
 
     protected function posts(): void
     {
-        Post::firstOrCreate(['slug' => 'what-to-pack-in-your-hospital-bag'], [
-            'title' => 'What to Pack in Your Hospital Bag',
-            'excerpt' => 'A doula\'s practical checklist for labour, recovery and bringing baby home — plus a few comforts you might not have thought of.',
-            'body' => '<p>Packing your bag is one of those little milestones that makes everything feel real. Here\'s what I recommend to the families I support.</p><h2>For labour</h2><ul><li>Your birth preferences (a few printed copies)</li><li>Lip balm and hair ties</li><li>A long phone charging cable</li><li>Snacks and a refillable water bottle with a straw</li></ul><h2>For recovery</h2><ul><li>Comfortable, dark-coloured clothes</li><li>Nursing bras or soft tops</li><li>Your own pillow</li></ul><h2>For baby</h2><ul><li>A going-home outfit (and a backup)</li><li>An installed car seat</li></ul><p>Most of all, bring your support team — and remember there\'s no "perfect" bag.</p>',
+        Post::firstOrCreate(['slug' => 'five-ways-to-prepare-for-the-fourth-trimester'], [
+            'title' => 'Five Ways to Prepare for the Fourth Trimester',
+            'excerpt' => 'Simple, practical steps you can take before baby arrives to make the early weeks at home feel calmer.',
+            'body' => '<p>The weeks after birth are a time of huge change. A little preparation now can make them feel calmer and more manageable.</p><h2>1. Fill the freezer</h2><p>Batch-cook a few easy, nourishing meals — soups, stews and muffins are all one-handed friendly.</p><h2>2. Set up recovery stations</h2><p>Keep a basket of water, snacks, pads, nipple balm and burp cloths wherever you\'ll be feeding.</p><h2>3. Line up your support</h2><p>Decide who can help with meals, older children, pets and errands — and let them know how.</p><h2>4. Plan for rest</h2><p>Talk with your partner about how you\'ll share nights so everyone gets some sleep.</p><h2>5. Know your local resources</h2><p>Save the numbers for your care provider, public health nurse and a lactation consultant before you need them.</p>',
             'published_at' => now()->subDays(3),
         ]);
     }
@@ -246,14 +229,14 @@ class StarterContentSeeder extends Seeder
      */
     protected function pages(array $services): void
     {
-        $birth = $services['birth-doula-support']->id ?? null;
-        $postpartum = $services['postpartum-support']->id ?? null;
+        $daytime = $services['in-home-daytime-support']->id ?? null;
+        $overnight = $services['overnight-support']->id ?? null;
 
         $cta = [
             'type' => 'cta_banner',
             'data' => [
-                'heading' => 'Let\'s talk about your birth',
-                'text' => 'Book a free, no-pressure consultation to see if we\'re a good fit.',
+                'heading' => 'Let\'s plan your fourth trimester',
+                'text' => 'Book a free, no-pressure consultation to talk about the support your family needs.',
                 'buttons' => [['label' => 'Book a Free Consult', 'url' => '/contact', 'style' => 'primary']],
             ],
         ];
@@ -264,21 +247,35 @@ class StarterContentSeeder extends Seeder
                 'show_in_nav' => false,
                 'blocks' => [
                     ['type' => 'hero', 'data' => [
-                        'eyebrow' => 'Birth & Postpartum Doula · Victoria, BC',
-                        'heading' => 'Calm, confident support for your birth journey',
-                        'subheading' => 'Compassionate, evidence-informed care so you feel informed, steady and truly supported — from pregnancy through the fourth trimester.',
+                        'eyebrow' => 'Postpartum Support · Victoria, BC',
+                        'heading' => 'Strong foundations for new beginnings',
+                        'subheading' => 'Calm, practical, in-home care in the weeks after baby arrives — so you can rest, heal and settle into life as a family.',
                         'height' => 'large',
                         'align' => 'center',
                         'overlay' => 'dark',
                         'buttons' => [
                             ['label' => 'Book a Free Consult', 'url' => '/contact', 'style' => 'primary'],
-                            ['label' => 'Explore Services', 'url' => '/services', 'style' => 'outline'],
+                            ['label' => 'How I Can Help', 'url' => '/services', 'style' => 'outline'],
+                        ],
+                    ]],
+                    ['type' => 'features', 'data' => [
+                        'background' => 'white',
+                        'heading' => 'Support for the Weeks After Birth',
+                        'intro' => 'The fourth trimester asks a lot of new parents. You don\'t have to do it alone.',
+                        'columns' => 3,
+                        'items' => [
+                            ['icon' => 'moon', 'title' => 'Rest & recovery', 'text' => 'Time to sleep, shower and heal while baby is cared for.'],
+                            ['icon' => 'heart', 'title' => 'Feeding support', 'text' => 'Patient, judgement-free help with every way of feeding.'],
+                            ['icon' => 'face-smile', 'title' => 'Newborn care', 'text' => 'Soothing, bathing, diapering and building your confidence.'],
+                            ['icon' => 'chat-bubble-left-right', 'title' => 'Emotional support', 'text' => 'A listening ear for the big feelings that come with a new baby.'],
+                            ['icon' => 'home', 'title' => 'Help around the home', 'text' => 'Light meals, laundry and tidying so home feels calm.'],
+                            ['icon' => 'user-group', 'title' => 'The whole family', 'text' => 'Support for partners and older siblings as everyone adjusts.'],
                         ],
                     ]],
                     ['type' => 'service_cards', 'data' => [
-                        'heading' => 'How I Can Support You',
-                        'intro' => 'Every family and every birth is different. Choose the support that feels right for you.',
-                        'layout' => 'carousel',
+                        'heading' => 'Ways I Can Help',
+                        'intro' => 'Every family is different. Choose the support that feels right for you.',
+                        'layout' => 'grid',
                         'which' => 'featured',
                         'button_label' => 'Learn More',
                     ]],
@@ -287,29 +284,23 @@ class StarterContentSeeder extends Seeder
                         'anchor' => 'about',
                         'image_side' => 'left',
                         'eyebrow' => 'Hi, I\'m Aubri',
-                        'heading' => 'Your birth, your way — with someone in your corner',
-                        'content' => '<p>I became a doula because I believe every person deserves to feel safe, heard and respected as they bring their baby into the world.</p><p>My approach is warm, practical and judgement-free. Whatever kind of birth you\'re planning, I\'ll help you understand your options, prepare your body and mind, and feel confident making decisions that are right for your family.</p>',
+                        'heading' => 'A steady presence in your home',
+                        'content' => '<p>I started Harbourstone because I believe every new family deserves to feel cared for — not just through pregnancy and birth, but in the weeks that follow, when the visitors go home and the real adjustment begins.</p><p>My approach is warm, practical and judgement-free. Whatever your family looks like and however you\'re feeding your baby, I\'m here to help you rest, recover and build a strong foundation for this new chapter.</p>',
                         'buttons' => [['label' => 'More About Me', 'url' => '/about', 'style' => 'outline']],
-                    ]],
-                    ['type' => 'service_spotlight', 'data' => [
-                        'service_id' => $birth,
-                        'image_side' => 'right',
-                        'show_features' => true,
-                        'show_testimonial' => true,
                     ]],
                     ['type' => 'steps', 'data' => [
                         'background' => 'soft',
                         'heading' => 'How It Works',
                         'intro' => 'Getting started is simple.',
                         'steps' => [
-                            ['title' => 'Free consultation', 'text' => 'We meet (in person or by video) to talk about your pregnancy, your hopes and how I can help.'],
-                            ['title' => 'Prepare together', 'text' => 'Prenatal visits to plan your birth preferences, practise comfort measures and answer every question.'],
-                            ['title' => 'Birth & beyond', 'text' => 'I\'m on call from 37 weeks, by your side in labour, and visit afterwards to help you settle in.'],
+                            ['title' => 'Free consultation', 'text' => 'We meet (in person or by video) to talk about your family and the kind of support you\'re hoping for.'],
+                            ['title' => 'Plan your support', 'text' => 'Together we choose daytime visits, overnights or both, and build a plan for your first weeks at home.'],
+                            ['title' => 'Care at home', 'text' => 'Once baby arrives I\'m there for you — adapting each visit to what your family needs that day.'],
                         ],
                     ]],
                     ['type' => 'service_spotlight', 'data' => [
-                        'service_id' => $postpartum,
-                        'image_side' => 'left',
+                        'service_id' => $overnight,
+                        'image_side' => 'right',
                         'show_features' => true,
                         'show_testimonial' => true,
                     ]],
@@ -336,29 +327,29 @@ class StarterContentSeeder extends Seeder
                 'title' => 'About',
                 'show_in_nav' => true,
                 'nav_order' => 1,
-                'meta_description' => 'Meet Aubri Porter, a birth and postpartum doula supporting families with warmth, knowledge and calm.',
+                'meta_description' => 'Meet Aubri Porter, founder of Harbourstone Postpartum Support in Victoria, BC.',
                 'blocks' => [
                     ['type' => 'hero', 'data' => [
                         'eyebrow' => 'About',
                         'heading' => 'Meet Aubri',
-                        'subheading' => 'Doula, educator, and steady presence for growing families.',
+                        'subheading' => 'Founder of Harbourstone Postpartum Support.',
                         'height' => 'medium',
                         'align' => 'center',
                     ]],
                     ['type' => 'image_text', 'data' => [
                         'image_side' => 'left',
                         'eyebrow' => 'My story',
-                        'heading' => 'Why I became a doula',
-                        'content' => '<p>Share your story here — what drew you to birth work, your training and certifications, and what you love about supporting families.</p><p>This is a great place to talk about your own experiences, your family, and what makes your support unique. Families choose a doula they connect with, so let your personality shine.</p>',
+                        'heading' => 'Why Harbourstone?',
+                        'content' => '<p>Share your story here — what drew you to postpartum work, your training, and what you love about supporting new families.</p><p>A harbour is a safe place to rest after a journey, and stones are what strong foundations are built from. Tell families what that means to you and how it shapes the care you offer.</p>',
                     ]],
                     ['type' => 'features', 'data' => [
                         'background' => 'white',
                         'heading' => 'My Approach',
                         'columns' => 3,
                         'items' => [
-                            ['icon' => 'heart', 'title' => 'Compassionate', 'text' => 'Judgement-free support for every kind of birth and every kind of family.'],
-                            ['icon' => 'book-open', 'title' => 'Evidence-informed', 'text' => 'Clear, up-to-date information so you can make confident choices.'],
-                            ['icon' => 'hand-raised', 'title' => 'Hands-on', 'text' => 'Comfort measures, positioning and practical help when it matters most.'],
+                            ['icon' => 'shield-check', 'title' => 'Grounded', 'text' => 'A calm, steady presence when everything feels new.'],
+                            ['icon' => 'hand-raised', 'title' => 'Practical', 'text' => 'Real, hands-on help with the things that make the biggest difference.'],
+                            ['icon' => 'heart', 'title' => 'Judgement-free', 'text' => 'Respect for every family, every choice and every way of feeding.'],
                         ],
                     ]],
                     ['type' => 'testimonial_quote', 'data' => ['background' => 'soft']],
@@ -366,15 +357,15 @@ class StarterContentSeeder extends Seeder
                 ],
             ],
             'services' => [
-                'title' => 'Services',
+                'title' => 'Support',
                 'show_in_nav' => true,
                 'nav_order' => 2,
-                'meta_description' => 'Birth doula support, postpartum care, childbirth education and virtual support.',
+                'meta_description' => 'In-home daytime support, overnight care and postpartum planning for new families in Greater Victoria.',
                 'blocks' => [
                     ['type' => 'hero', 'data' => [
-                        'eyebrow' => 'Services',
-                        'heading' => 'Support for every stage',
-                        'subheading' => 'From your first prenatal questions to the early weeks at home.',
+                        'eyebrow' => 'Postpartum Support',
+                        'heading' => 'Care for your fourth trimester',
+                        'subheading' => 'Daytime visits, restful nights and a plan for life at home with your new baby.',
                         'height' => 'medium',
                         'align' => 'center',
                     ]],
@@ -384,18 +375,25 @@ class StarterContentSeeder extends Seeder
                         'which' => 'all',
                         'button_label' => 'Learn More',
                     ]],
-                    ['type' => 'packages', 'data' => [
+                    ['type' => 'service_spotlight', 'data' => [
                         'background' => 'white',
-                        'heading' => 'Birth Support Packages',
-                        'intro' => 'Payment plans are always available — please don\'t let cost stop you from reaching out.',
+                        'service_id' => $daytime,
+                        'image_side' => 'left',
+                        'show_features' => true,
+                        'show_testimonial' => true,
+                    ]],
+                    ['type' => 'packages', 'data' => [
+                        'heading' => 'Support Packages',
+                        'intro' => 'Pre-book a block of hours and use them however you need — daytime, overnight, or a mix.',
                         'packages' => [
-                            ['name' => 'Essential', 'price' => '$1,100', 'description' => 'Everything you need for a supported birth.', 'features' => ['Free consultation', '2 prenatal visits', 'On call from 37 weeks', 'Continuous labour support', '1 postpartum visit'], 'button_label' => 'Get Started', 'button_url' => '/contact', 'highlighted' => false],
-                            ['name' => 'Complete', 'price' => '$1,450', 'price_note' => 'or 3 payments of $485', 'description' => 'Birth support plus private childbirth education.', 'features' => ['Everything in Essential', 'Private childbirth class', 'Unlimited text support', '2 postpartum visits'], 'button_label' => 'Get Started', 'button_url' => '/contact', 'highlighted' => true],
-                            ['name' => 'Fourth Trimester', 'price' => '$1,900', 'description' => 'Birth support with extended postpartum care at home.', 'features' => ['Everything in Complete', '10 hours of postpartum care', 'Feeding support', 'Postpartum planning session'], 'button_label' => 'Get Started', 'button_url' => '/contact', 'highlighted' => false],
+                            ['name' => 'Gentle Start', 'price' => '$480', 'price_note' => '12 hours of support', 'description' => 'A soft landing for your first weeks at home.', 'features' => ['Free consultation', '12 hours of in-home support', 'Text check-ins between visits', 'Local resource list'], 'button_label' => 'Get Started', 'button_url' => '/contact', 'highlighted' => false],
+                            ['name' => 'Settling In', 'price' => '$900', 'price_note' => '24 hours of support', 'description' => 'Our most popular package for new families.', 'features' => ['Everything in Gentle Start', '24 hours of support', 'Postpartum planning session', 'Daytime or overnight visits'], 'button_label' => 'Get Started', 'button_url' => '/contact', 'highlighted' => true],
+                            ['name' => 'Strong Foundations', 'price' => '$1,450', 'price_note' => '40 hours of support', 'description' => 'Extended care through the whole fourth trimester.', 'features' => ['Everything in Settling In', '40 hours of support', 'Priority scheduling', 'Weekly check-in calls'], 'button_label' => 'Get Started', 'button_url' => '/contact', 'highlighted' => false],
                         ],
-                        'footnote' => 'Prices are placeholders — update them in the admin under Website → Pages → Services.',
+                        'footnote' => 'Prices are placeholders — update them in the admin under Website → Pages → Support.',
                     ]],
                     ['type' => 'faq', 'data' => [
+                        'background' => 'white',
                         'heading' => 'Booking Questions',
                         'category' => 'Booking',
                     ]],

@@ -8,7 +8,7 @@
         <img src="{{ $logo }}" alt="{{ $site->name() }}" style="height: {{ $height }}px" class="w-auto {{ $light ? 'brightness-0 invert' : '' }}">
     @else
         <span class="flex flex-col leading-none">
-            <span class="font-heading text-[1.75rem] tracking-wide {{ $light ? 'text-white' : 'text-ink' }}">{{ $site->name() }}</span>
+            <span class="font-heading text-[1.75rem] tracking-wide {{ $light ? 'text-white' : 'text-ink' }}">{{ $site->logoText() }}</span>
             @if($site->get('branding.tagline'))
                 <span class="mt-1 text-[10px] font-semibold uppercase tracking-[0.3em] {{ $light ? 'text-accent' : 'text-primary' }}">{{ $site->get('branding.tagline') }}</span>
             @endif

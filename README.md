@@ -1,6 +1,8 @@
-# Aubri Porter — Doula Website
+# Harbourstone Postpartum Support
 
-Laravel 13 + Filament 5 site for Aubri Porter's doula practice. The public site is built from
+*Strong Foundations for New Beginnings*
+
+Laravel 13 + Filament 5 site for Aubri Porter's postpartum support practice in Victoria, BC. The public site is built from
 editable page sections, so nearly everything can be changed from the admin at `/admin`
 without touching code.
 
@@ -32,7 +34,7 @@ Run the tests with `php artisan test`.
 | **Website → Testimonials** | Reviews, optionally linked to a service so they appear with it. |
 | **Website → FAQs** | Questions with optional categories (sections can show one category). |
 | **Website → Blog** | Posts with cover images; future publish dates are scheduled automatically. |
-| **Settings → Site Settings** | Name/logo/favicon, colour presets + custom colours, fonts, button shape, announcement bar, main menu (with dropdowns), contact details, social links, footer, SEO and Google Analytics. |
+| **Settings → Site Settings** | Business name, motto, header name/logo/favicon, colour presets + custom colours, fonts, button shape, announcement bar, main menu (with dropdowns), contact details, social links, footer, SEO and Google Analytics. |
 | **Settings → Admin Users** | Logins for the admin. |
 
 ### Page sections

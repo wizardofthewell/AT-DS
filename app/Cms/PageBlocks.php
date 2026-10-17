@@ -218,7 +218,7 @@ class PageBlocks
                 Textarea::make('intro')->rows(2),
                 Grid::make(2)->schema([
                     Toggle::make('show_details')->label('Show contact details beside the form')->default(true)->inline(false),
-                    Toggle::make('ask_due_date')->label('Ask for due date')->default(true)->inline(false),
+                    Toggle::make('ask_due_date')->label("Ask for due date / baby's birthday")->default(true)->inline(false),
                 ]),
             ], heading: 'heading'),
 

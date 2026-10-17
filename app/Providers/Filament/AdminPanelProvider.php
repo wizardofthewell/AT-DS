@@ -32,8 +32,9 @@ class AdminPanelProvider extends PanelProvider
             ->passwordReset()
             ->profile()
             ->brandName(config('app.name'))
+            ->favicon(asset('favicon.svg'))
             ->colors([
-                'primary' => Color::hex('#6f7f63'),
+                'primary' => Color::hex('#66705a'),
                 'gray' => Color::Stone,
             ])
             ->font('Nunito Sans')

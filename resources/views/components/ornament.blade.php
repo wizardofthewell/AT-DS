@@ -1,8 +1,7 @@
-{{-- Small botanical sprig used under headings and as a divider. --}}
-<svg {{ $attributes->merge(['class' => 'block h-5 w-28 text-accent']) }} viewBox="0 0 112 20" fill="none" aria-hidden="true">
-    <path d="M2 10h40M70 10h40" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity=".6"/>
-    <path d="M56 17c0-5 0-9 0-14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-    <path d="M56 9c-3.5-.3-6.5-2.5-7.5-6 3.6-.1 6.8 2 7.5 6Z" fill="currentColor" opacity=".85"/>
-    <path d="M56 13c3.5-.3 6.5-2.5 7.5-6-3.6-.1-6.8 2-7.5 6Z" fill="currentColor" opacity=".85"/>
-    <path d="M56 15.5c-2.6-.2-4.9-1.9-5.6-4.5 2.7-.1 5 1.5 5.6 4.5Z" fill="currentColor" opacity=".55"/>
+{{-- Small stacked-stone cairn used under headings and as a divider. --}}
+<svg {{ $attributes->merge(['class' => 'block h-5 w-28 text-accent']) }} viewBox="0 0 112 22" fill="none" aria-hidden="true">
+    <path d="M2 18h38M72 18h38" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity=".6"/>
+    <ellipse cx="56" cy="17.2" rx="11" ry="3.6" fill="currentColor"/>
+    <ellipse cx="55.4" cy="10.6" rx="7.6" ry="3" fill="currentColor" opacity=".8"/>
+    <ellipse cx="56.3" cy="4.9" rx="4.6" ry="2.4" fill="currentColor" opacity=".6"/>
 </svg>

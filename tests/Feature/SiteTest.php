@@ -27,7 +27,7 @@ class SiteTest extends TestCase
 
     public function test_starter_pages_render(): void
     {
-        foreach (['/', '/about', '/services', '/faq', '/contact', '/blog', '/services/birth-doula-support', '/sitemap.xml'] as $url) {
+        foreach (['/', '/about', '/services', '/faq', '/contact', '/blog', '/services/in-home-daytime-support', '/sitemap.xml'] as $url) {
             $this->get($url)->assertOk();
         }
     }
@@ -80,6 +80,19 @@ class SiteTest extends TestCase
         SiteSetting::set('theme', ['primary' => '#123456']);
 
         $this->get('/')->assertSee('--site-primary: #123456', false);
+    }
+
+    public function test_branding_name_and_motto_render(): void
+    {
+        SiteSetting::set('branding', [
+            'site_name' => 'Harbourstone Postpartum Support',
+            'logo_text' => 'Harbourstone',
+            'motto' => 'Strong Foundations for New Beginnings',
+        ]);
+
+        $this->get('/')
+            ->assertSee('<title>Harbourstone Postpartum Support | Strong Foundations for New Beginnings</title>', false)
+            ->assertSee('>Harbourstone</span>', false);
     }
 
     public function test_admin_pages_load(): void

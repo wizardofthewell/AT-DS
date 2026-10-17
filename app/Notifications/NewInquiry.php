@@ -34,7 +34,7 @@ class NewInquiry extends Notification
         }
 
         if ($inquiry->due_date) {
-            $mail->line('**Due date:** '.$inquiry->due_date->format('F j, Y'));
+            $mail->line("**Due date / baby's birthday:** ".$inquiry->due_date->format('F j, Y'));
         }
 
         if ($inquiry->service_interest) {

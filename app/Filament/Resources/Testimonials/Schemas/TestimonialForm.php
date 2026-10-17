@@ -27,7 +27,7 @@ class TestimonialForm
                             ->required()
                             ->placeholder('Megan G.'),
                         TextInput::make('context')
-                            ->placeholder('First-time parents, birth doula client'),
+                            ->placeholder('First-time parents, overnight support client'),
                         Select::make('service_id')
                             ->label('Related service')
                             ->relationship('service', 'title')

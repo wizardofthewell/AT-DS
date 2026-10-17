@@ -6,11 +6,13 @@ use App\Cms\PageBlocks;
 use App\Filament\Pages\ManageSiteSettings;
 use App\Models\Inquiry;
 use App\Models\Page;
+use App\Models\Service;
 use App\Models\SiteSetting;
 use App\Models\User;
 use Database\Seeders\StarterContentSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class SiteTest extends TestCase
@@ -22,6 +24,7 @@ class SiteTest extends TestCase
         parent::setUp();
 
         $this->withoutVite();
+        Storage::fake('public');
         $this->seed(StarterContentSeeder::class);
     }
 
@@ -30,6 +33,15 @@ class SiteTest extends TestCase
         foreach (['/', '/about', '/services', '/faq', '/contact', '/blog', '/services/in-home-daytime-support', '/sitemap.xml'] as $url) {
             $this->get($url)->assertOk();
         }
+    }
+
+    public function test_seeder_copies_stock_images_to_public_storage(): void
+    {
+        $service = Service::where('slug', 'in-home-daytime-support')->first();
+
+        $this->assertSame('services/holding-baby-hand.avif', $service->image);
+        Storage::disk('public')->assertExists($service->image);
+        $this->get('/')->assertSee($service->image_url, false);
     }
 
     public function test_every_block_type_renders(): void

@@ -9,6 +9,7 @@ use App\Models\Service;
 use App\Models\SiteSetting;
 use App\Models\Testimonial;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Starter content so the site looks complete on day one. Everything here is
@@ -102,6 +103,7 @@ class StarterContentSeeder extends Seeder
                 'title' => 'In-Home Daytime Support',
                 'tagline' => 'Rest, recover and find your rhythm',
                 'icon' => 'home',
+                'image' => $this->stockImage('photo-1470116945706-e6bf5d5a53ca.avif', 'services/holding-baby-hand.avif'),
                 'summary' => 'Hands-on help at home in the weeks after baby arrives — feeding support, newborn care, a warm meal and time for you to rest and heal.',
                 'price_label' => 'From $40 / hour',
                 'button_label' => 'Book a Free Consult',
@@ -121,6 +123,7 @@ class StarterContentSeeder extends Seeder
                 'title' => 'Overnight Support',
                 'tagline' => 'Restful nights for the whole family',
                 'icon' => 'moon',
+                'image' => $this->stockImage('photo-1582486225644-aeacf6aa0b1b.avif', 'services/sleeping-newborn.avif'),
                 'summary' => 'Overnight care so you can get the sleep your body needs to recover, knowing baby is in gentle, experienced hands.',
                 'price_label' => 'From $45 / hour',
                 'button_label' => 'Ask About Availability',
@@ -220,6 +223,7 @@ class StarterContentSeeder extends Seeder
             'title' => 'Five Ways to Prepare for the Fourth Trimester',
             'excerpt' => 'Simple, practical steps you can take before baby arrives to make the early weeks at home feel calmer.',
             'body' => '<p>The weeks after birth are a time of huge change. A little preparation now can make them feel calmer and more manageable.</p><h2>1. Fill the freezer</h2><p>Batch-cook a few easy, nourishing meals — soups, stews and muffins are all one-handed friendly.</p><h2>2. Set up recovery stations</h2><p>Keep a basket of water, snacks, pads, nipple balm and burp cloths wherever you\'ll be feeding.</p><h2>3. Line up your support</h2><p>Decide who can help with meals, older children, pets and errands — and let them know how.</p><h2>4. Plan for rest</h2><p>Talk with your partner about how you\'ll share nights so everyone gets some sleep.</p><h2>5. Know your local resources</h2><p>Save the numbers for your care provider, public health nurse and a lactation consultant before you need them.</p>',
+            'cover_image' => $this->stockImage('photo-1470116945706-e6bf5d5a53ca.avif', 'blog/holding-baby-hand.avif'),
             'published_at' => now()->subDays(3),
         ]);
     }
@@ -441,5 +445,23 @@ class StarterContentSeeder extends Seeder
         foreach ($pages as $slug => $page) {
             Page::firstOrCreate(['slug' => $slug], $page + ['is_published' => true]);
         }
+    }
+
+    /**
+     * Copy a stock photo from resources/img onto the public disk and return its stored path.
+     */
+    protected function stockImage(string $source, string $target): ?string
+    {
+        $sourcePath = resource_path("img/{$source}");
+
+        if (! is_file($sourcePath)) {
+            return null;
+        }
+
+        if (! Storage::disk('public')->exists($target)) {
+            Storage::disk('public')->put($target, file_get_contents($sourcePath));
+        }
+
+        return $target;
     }
 }

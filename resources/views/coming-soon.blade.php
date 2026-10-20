@@ -32,7 +32,7 @@
                 <a href="mailto:{{ $email }}" class="text-white underline underline-offset-4 hover:opacity-80">{{ $email }}</a>
             </p>
         @endif
-        @if(!empty($social))
+        @if(!empty($social) && count($social) > 0)
             <x-social-links :links="$social" class="mt-6 justify-center gap-5" size="w-5 h-5" />
         @endif
     </main>

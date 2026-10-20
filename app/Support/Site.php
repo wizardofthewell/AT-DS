@@ -37,6 +37,15 @@ class Site
     }
 
     /**
+     * Whether the site has been launched. Until then, visitors who are not
+     * signed in see the coming soon page.
+     */
+    public function isLive(): bool
+    {
+        return (bool) $this->get('launch.live', false);
+    }
+
+    /**
      * Render rich editor content (HTML string or TipTap JSON) and fill placeholders.
      */
     public function html(mixed $content): string

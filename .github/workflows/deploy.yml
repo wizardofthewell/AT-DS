@@ -1,0 +1,73 @@
+name: Deploy to server
+
+on:
+  push:
+    branches: ["main"]
+  # Allow manual runs too
+  workflow_dispatch: {}
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Run when: push to main OR manual dispatch
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    concurrency:
+      group: deploy-${{ github.ref }}
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout (for scp of deploy script)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Start ssh-agent and add key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+      - name: Add server to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
+
+      # Uploaded under its own name so it never overwrites the other sites' deploy scripts on the shared host
+      - name: Copy deploy script to server
+        run: |
+          PORT="${{ secrets.DEPLOY_PORT }}"
+          if [ -z "$PORT" ]; then PORT=22; fi
+          scp -P "$PORT" -o StrictHostKeyChecking=yes deploy.sh "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/home/${{ secrets.DEPLOY_USER }}/deploy-harbourstone.sh"
+
+      - name: Run deploy on server
+        env:
+          # Paths, repo URL and app user live in this server-side file
+          DEPLOY_ENV_FILE: /home/riley/.env_harbourstone
+          LOCK_FILE: /home/riley/.deploy/harbourstone.deploy.lock
+          BRANCH: main
+          SUDO_PASSWORD: ${{ secrets.SUDO_PASSWORD }}
+        run: |
+          PORT="${{ secrets.DEPLOY_PORT }}"
+          PORT="${PORT:-22}"
+          TARGET="${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}"
+
+          # Shell-quote each setting so values with spaces or quotes survive the ssh hop
+          VARS=""
+          for v in DEPLOY_ENV_FILE LOCK_FILE BRANCH; do
+            VARS+=" $v=$(printf '%q' "${!v}")"
+          done
+
+          PREP="mkdir -p ~/.deploy && chmod 700 ~/.deploy && chmod +x ~/deploy-harbourstone.sh"
+          SSH=(ssh -p "$PORT" -o StrictHostKeyChecking=yes -o ServerAliveInterval=30 "$TARGET")
+
+          if [ -n "$SUDO_PASSWORD" ]; then
+            # Password goes over stdin, never into the remote command line (visible in `ps`)
+            printf '%s\n' "$SUDO_PASSWORD" | "${SSH[@]}" "$PREP && sudo -S -p '' env$VARS bash ~/deploy-harbourstone.sh"
+          else
+            "${SSH[@]}" "$PREP && sudo -n env$VARS bash ~/deploy-harbourstone.sh"
+          fi

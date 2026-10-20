@@ -1,0 +1,39 @@
+name: Create dev to main PR
+
+on:
+  push:
+    branches:
+      - dev
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Create PR if one does not exist
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          existing_pr=$(gh pr list \
+            --base main \
+            --head dev \
+            --state open \
+            --json number \
+            --jq 'length')
+
+          if [ "$existing_pr" -eq 0 ]; then
+            gh pr create \
+              --base main \
+              --head dev \
+              --title "Merge dev into main" \
+              --body "Automatically created after a push to dev."
+          else
+            echo "An open dev -> main PR already exists."
+          fi

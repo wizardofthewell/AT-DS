@@ -13,6 +13,7 @@ use Database\Seeders\StarterContentSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 class SiteTest extends TestCase
@@ -26,6 +27,49 @@ class SiteTest extends TestCase
         $this->withoutVite();
         Storage::fake('public');
         $this->seed(StarterContentSeeder::class);
+        SiteSetting::set('launch', ['live' => true]);
+    }
+
+    public function test_visitors_see_coming_soon_page_until_site_is_live(): void
+    {
+        SiteSetting::set('launch', ['live' => false]);
+
+        foreach (['/', '/about', '/blog', '/services/in-home-daytime-support', '/does-not-exist', '/not/a/route'] as $url) {
+            $this->get($url)
+                ->assertOk()
+                ->assertSee('Great things are coming soon')
+                ->assertDontSee('Book a Consult');
+        }
+
+        $this->post('/contact-submit', ['name' => 'Sam', 'email' => 'sam@example.com', 'message' => 'Hi'])
+            ->assertSee('Great things are coming soon');
+        $this->assertSame(0, Inquiry::count());
+    }
+
+    public function test_signed_in_admins_preview_the_full_site_before_launch(): void
+    {
+        SiteSetting::set('launch', ['live' => false]);
+
+        $this->actingAs(User::factory()->create())
+            ->get('/')
+            ->assertOk()
+            ->assertSee('Book a Consult')
+            ->assertSee('visitors currently see the coming soon page');
+    }
+
+    public function test_admin_can_take_the_site_live(): void
+    {
+        SiteSetting::set('launch', ['live' => false]);
+
+        Livewire::actingAs(User::factory()->create())
+            ->test(ManageSiteSettings::class)
+            ->set('data.launch.live', true)
+            ->call('save')
+            ->assertHasNoErrors();
+
+        auth()->logout();
+
+        $this->get('/')->assertOk()->assertSee('Book a Consult')->assertDontSee('Great things are coming soon');
     }
 
     public function test_starter_pages_render(): void
@@ -39,7 +83,7 @@ class SiteTest extends TestCase
     {
         $service = Service::where('slug', 'in-home-daytime-support')->first();
 
-        $this->assertSame('services/holding-baby-hand.avif', $service->image);
+        $this->assertSame('services/holding-baby-hand.jpg', $service->image);
         Storage::disk('public')->assertExists($service->image);
         $this->get('/')->assertSee($service->image_url, false);
     }

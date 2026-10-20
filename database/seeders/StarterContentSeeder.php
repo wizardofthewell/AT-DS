@@ -81,6 +81,7 @@ class StarterContentSeeder extends Seeder
                 'copyright' => '© {year} {name}. All rights reserved.',
             ],
             'seo' => [
+                'share_image' => $this->stockImage('home-hero.jpg', 'branding/share-image.jpg'),
                 'description' => 'Harbourstone Postpartum Support offers in-home daytime and overnight care for new families across Greater Victoria, BC. Strong foundations for new beginnings.',
             ],
         ];
@@ -103,7 +104,7 @@ class StarterContentSeeder extends Seeder
                 'title' => 'In-Home Daytime Support',
                 'tagline' => 'Rest, recover and find your rhythm',
                 'icon' => 'home',
-                'image' => $this->stockImage('photo-1470116945706-e6bf5d5a53ca.avif', 'services/holding-baby-hand.avif'),
+                'image' => $this->stockImage('holding-baby-hand.jpg', 'services/holding-baby-hand.jpg'),
                 'summary' => 'Hands-on help at home in the weeks after baby arrives — feeding support, newborn care, a warm meal and time for you to rest and heal.',
                 'price_label' => 'From $40 / hour',
                 'button_label' => 'Book a Free Consult',
@@ -123,7 +124,7 @@ class StarterContentSeeder extends Seeder
                 'title' => 'Overnight Support',
                 'tagline' => 'Restful nights for the whole family',
                 'icon' => 'moon',
-                'image' => $this->stockImage('photo-1582486225644-aeacf6aa0b1b.avif', 'services/sleeping-newborn.avif'),
+                'image' => $this->stockImage('sleeping-newborn.jpg', 'services/sleeping-newborn.jpg'),
                 'summary' => 'Overnight care so you can get the sleep your body needs to recover, knowing baby is in gentle, experienced hands.',
                 'price_label' => 'From $45 / hour',
                 'button_label' => 'Ask About Availability',
@@ -142,6 +143,7 @@ class StarterContentSeeder extends Seeder
                 'title' => 'Postpartum Planning',
                 'tagline' => 'Prepare for the fourth trimester',
                 'icon' => 'book-open',
+                'image' => $this->stockImage('postpartum-planning.jpg', 'services/postpartum-planning.jpg'),
                 'summary' => 'A relaxed session before baby arrives to build your postpartum plan — support, meals, recovery, sleep and local resources.',
                 'price_label' => '$150 per session',
                 'button_label' => 'Book a Session',
@@ -223,7 +225,7 @@ class StarterContentSeeder extends Seeder
             'title' => 'Five Ways to Prepare for the Fourth Trimester',
             'excerpt' => 'Simple, practical steps you can take before baby arrives to make the early weeks at home feel calmer.',
             'body' => '<p>The weeks after birth are a time of huge change. A little preparation now can make them feel calmer and more manageable.</p><h2>1. Fill the freezer</h2><p>Batch-cook a few easy, nourishing meals — soups, stews and muffins are all one-handed friendly.</p><h2>2. Set up recovery stations</h2><p>Keep a basket of water, snacks, pads, nipple balm and burp cloths wherever you\'ll be feeding.</p><h2>3. Line up your support</h2><p>Decide who can help with meals, older children, pets and errands — and let them know how.</p><h2>4. Plan for rest</h2><p>Talk with your partner about how you\'ll share nights so everyone gets some sleep.</p><h2>5. Know your local resources</h2><p>Save the numbers for your care provider, public health nurse and a lactation consultant before you need them.</p>',
-            'cover_image' => $this->stockImage('photo-1470116945706-e6bf5d5a53ca.avif', 'blog/holding-baby-hand.avif'),
+            'cover_image' => $this->stockImage('blog-mother-baby.jpg', 'blog/blog-mother-baby.jpg'),
             'published_at' => now()->subDays(3),
         ]);
     }
@@ -239,6 +241,7 @@ class StarterContentSeeder extends Seeder
         $cta = [
             'type' => 'cta_banner',
             'data' => [
+                'image' => $this->stockImage('cta-cairn.jpg', 'cms/cta-cairn.jpg'),
                 'heading' => 'Let\'s plan your fourth trimester',
                 'text' => 'Book a free, no-pressure consultation to talk about the support your family needs.',
                 'buttons' => [['label' => 'Book a Free Consult', 'url' => '/contact', 'style' => 'primary']],
@@ -251,6 +254,7 @@ class StarterContentSeeder extends Seeder
                 'show_in_nav' => false,
                 'blocks' => [
                     ['type' => 'hero', 'data' => [
+                        'image' => $this->stockImage('home-hero.jpg', 'cms/home-hero.jpg'),
                         'eyebrow' => 'Postpartum Support · Victoria, BC',
                         'heading' => 'Strong foundations for new beginnings',
                         'subheading' => 'Calm, practical, in-home care in the weeks after baby arrives — so you can rest, heal and settle into life as a family.',
@@ -286,6 +290,8 @@ class StarterContentSeeder extends Seeder
                     ['type' => 'image_text', 'data' => [
                         'background' => 'white',
                         'anchor' => 'about',
+                        'image' => $this->stockImage('home-steady-presence.jpg', 'cms/home-steady-presence.jpg'),
+                        'image_alt' => 'A newborn resting on a parent\'s shoulder',
                         'image_side' => 'left',
                         'eyebrow' => 'Hi, I\'m Aubri',
                         'heading' => 'A steady presence in your home',
@@ -334,6 +340,7 @@ class StarterContentSeeder extends Seeder
                 'meta_description' => 'Meet Aubri Porter, founder of Harbourstone Postpartum Support in Victoria, BC.',
                 'blocks' => [
                     ['type' => 'hero', 'data' => [
+                        'image' => $this->stockImage('about-hero.jpg', 'cms/about-hero.jpg'),
                         'eyebrow' => 'About',
                         'heading' => 'Meet Aubri',
                         'subheading' => 'Founder of Harbourstone Postpartum Support.',
@@ -341,6 +348,8 @@ class StarterContentSeeder extends Seeder
                         'align' => 'center',
                     ]],
                     ['type' => 'image_text', 'data' => [
+                        'image' => $this->stockImage('about-shoreline-cairn.jpg', 'cms/about-shoreline-cairn.jpg'),
+                        'image_alt' => 'A stack of stones on a quiet shoreline',
                         'image_side' => 'left',
                         'eyebrow' => 'My story',
                         'heading' => 'Why Harbourstone?',
@@ -367,6 +376,7 @@ class StarterContentSeeder extends Seeder
                 'meta_description' => 'In-home daytime support, overnight care and postpartum planning for new families in Greater Victoria.',
                 'blocks' => [
                     ['type' => 'hero', 'data' => [
+                        'image' => $this->stockImage('support-hero-harbour.jpg', 'cms/support-hero-harbour.jpg'),
                         'eyebrow' => 'Postpartum Support',
                         'heading' => 'Care for your fourth trimester',
                         'subheading' => 'Daytime visits, restful nights and a plan for life at home with your new baby.',
@@ -410,6 +420,7 @@ class StarterContentSeeder extends Seeder
                 'nav_order' => 3,
                 'blocks' => [
                     ['type' => 'hero', 'data' => [
+                        'image' => $this->stockImage('faq-hero-tea-candle.jpg', 'cms/faq-hero-tea-candle.jpg'),
                         'eyebrow' => 'FAQ',
                         'heading' => 'Questions, answered',
                         'subheading' => 'Don\'t see your question here? I\'m always happy to chat.',
@@ -426,6 +437,7 @@ class StarterContentSeeder extends Seeder
                 'nav_order' => 5,
                 'blocks' => [
                     ['type' => 'hero', 'data' => [
+                        'image' => $this->stockImage('contact-hero-tea-knit.jpg', 'cms/contact-hero-tea-knit.jpg'),
                         'eyebrow' => 'Contact',
                         'heading' => 'Let\'s connect',
                         'subheading' => 'Reach out for a free consultation or with any questions at all.',

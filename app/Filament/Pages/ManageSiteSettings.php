@@ -34,7 +34,7 @@ class ManageSiteSettings extends Page
     /**
      * Setting groups stored as one row each in site_settings.
      */
-    public const GROUPS = ['branding', 'theme', 'topbar', 'navigation', 'contact', 'social', 'footer', 'seo'];
+    public const GROUPS = ['launch', 'branding', 'theme', 'topbar', 'navigation', 'contact', 'social', 'footer', 'seo'];
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedAdjustmentsHorizontal;
 
@@ -60,6 +60,34 @@ class ManageSiteSettings extends Page
                 Tabs::make()
                     ->persistTabInQueryString()
                     ->tabs([
+                        Tab::make('Launch')
+                            ->icon('heroicon-o-rocket-launch')
+                            ->schema([
+                                Section::make('Go live')
+                                    ->description('Until the site is live, visitors see a coming soon page. While you are signed in you see the full site, so you can preview it.')
+                                    ->schema([
+                                        Toggle::make('launch.live')
+                                            ->label('Website is live')
+                                            ->helperText('Turn on to show the full website to everyone.'),
+                                    ]),
+                                Section::make('Coming soon page')
+                                    ->schema([
+                                        TextInput::make('launch.heading')
+                                            ->label('Heading')
+                                            ->placeholder('Great things are coming soon'),
+                                        Textarea::make('launch.message')
+                                            ->label('Message (optional)')
+                                            ->rows(2)
+                                            ->helperText('Shown under the heading. Defaults to your motto.'),
+                                        FileUpload::make('launch.image')
+                                            ->label('Background image (optional)')
+                                            ->image()
+                                            ->disk('public')
+                                            ->directory('branding')
+                                            ->helperText('Shown softly behind the text. Defaults to the social share image.'),
+                                    ]),
+                            ]),
+
                         Tab::make('Branding')
                             ->icon('heroicon-o-identification')
                             ->schema([

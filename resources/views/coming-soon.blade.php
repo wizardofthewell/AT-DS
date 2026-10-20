@@ -26,14 +26,15 @@
             <p class="mt-6 font-heading text-2xl italic text-accent">{{ $site->motto() }}</p>
         @endif
 
-        @if($email)
+        @if(!empty($email) && $email != 'hello@example.com')
             <p class="mt-10 text-white/80">
                 In the meantime, say hello at
                 <a href="mailto:{{ $email }}" class="text-white underline underline-offset-4 hover:opacity-80">{{ $email }}</a>
             </p>
         @endif
-
-        <x-social-links :links="$social" class="mt-6 justify-center gap-5" size="w-5 h-5" />
+        @if(!empty($social))
+            <x-social-links :links="$social" class="mt-6 justify-center gap-5" size="w-5 h-5" />
+        @endif
     </main>
 </body>
 </html>

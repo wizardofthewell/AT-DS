@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\Auditable;
 use Illuminate\Database\Eloquent\Model;
 
 class Inquiry extends Model
 {
+    use Auditable;
+
     public const STATUSES = [
         'new' => 'New',
         'contacted' => 'Contacted',

@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\Auditable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
 class Page extends Model
 {
+    use Auditable;
+
     /**
      * Slugs that must never be used by CMS pages because they collide
      * with application routes.

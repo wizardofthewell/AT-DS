@@ -289,7 +289,7 @@ class ManageSiteSettings extends Page
                                             ->label('Short blurb')
                                             ->rows(3),
                                         Textarea::make('footer.acknowledgement')
-                                            ->label('Land acknowledgement or extra note (optional)')
+                                            ->label('Extra note (optional)')
                                             ->rows(3),
                                         TextInput::make('footer.copyright')
                                             ->placeholder('© {year} Harbourstone Postpartum Support')

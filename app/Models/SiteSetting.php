@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\Auditable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Schema;
 
 class SiteSetting extends Model
 {
+    use Auditable;
+
     protected $fillable = ['key', 'value'];
 
     protected function casts(): array
@@ -60,6 +63,11 @@ class SiteSetting extends Model
 
             return static::query()->pluck('value', 'key')->toArray();
         });
+    }
+
+    public function auditLabel(): string
+    {
+        return 'Site settings: '.str($this->key)->headline();
     }
 
     protected static function booted(): void

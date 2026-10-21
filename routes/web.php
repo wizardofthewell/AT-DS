@@ -4,11 +4,14 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\StopImpersonationController;
 use App\Http\Middleware\ShowComingSoonUntilLive;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\Service;
 use Illuminate\Support\Facades\Route;
+
+Route::post('/impersonation/stop', StopImpersonationController::class)->name('impersonation.stop');
 
 Route::middleware(ShowComingSoonUntilLive::class)->group(function () {
     Route::get('/', [PageController::class, 'home'])->name('home');

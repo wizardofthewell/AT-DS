@@ -13,6 +13,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 
 class UserResource extends Resource
 {
@@ -25,6 +26,19 @@ class UserResource extends Resource
     protected static ?int $navigationSort = 2;
 
     protected static ?string $navigationLabel = 'Admin Users';
+
+    /**
+     * Regular admins cannot change or remove a super admin's account.
+     */
+    public static function canEdit(Model $record): bool
+    {
+        return ! $record->isSuperAdmin() || auth()->user()?->isSuperAdmin();
+    }
+
+    public static function canDelete(Model $record): bool
+    {
+        return static::canEdit($record);
+    }
 
     public static function form(Schema $schema): Schema
     {

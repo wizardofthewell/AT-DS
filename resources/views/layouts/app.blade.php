@@ -6,6 +6,8 @@
 <body class="flex min-h-screen flex-col">
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-3 focus:rounded focus:bg-white focus:px-4 focus:py-2">Skip to content</a>
 
+    <x-impersonation-banner />
+
     @if(! $site->isLive() && auth()->check())
         <div class="bg-ink px-4 py-2 text-center text-xs text-white">
             Preview — visitors currently see the coming soon page.

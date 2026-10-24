@@ -40,7 +40,7 @@
 <footer class="mt-12 text-center text-white/80">
     &copy; {{ date('Y') }} {{ $site->get('name') }}. All rights reserved.
 
-    <a href="{{ route('admin.login') }}" class="text-white underline underline-offset-4 hover:opacity-80">Admin Login</a>
+    <a href="{{ route('filament.admin.auth.login') }}" class="text-white underline underline-offset-4 hover:opacity-80">Admin Login</a>
 
 </footer>
 </html>

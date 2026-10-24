@@ -41,6 +41,8 @@ class SiteTest extends TestCase
                 ->assertDontSee('Book a Consult');
         }
 
+        $this->get('/')->assertSee(route('filament.admin.auth.login'));
+
         $this->post('/contact-submit', ['name' => 'Sam', 'email' => 'sam@example.com', 'message' => 'Hi'])
             ->assertSee('Great things are coming soon');
         $this->assertSame(0, Inquiry::count());

@@ -14,6 +14,7 @@
     --color-on-primary: var(--site-on-primary);
     --color-accent: var(--site-accent);
     --color-cream: var(--site-background);
+    --color-surface: var(--site-surface);
     --color-ink: var(--site-text);
     --color-dark: var(--site-dark);
     --color-soft: color-mix(in oklab, var(--site-primary) 9%, var(--site-background));
@@ -78,15 +79,15 @@
     }
 
     .btn-light {
-        @apply bg-white text-ink hover:bg-cream;
+        @apply bg-surface text-ink hover:bg-cream;
     }
 
     .card {
-        @apply rounded-2xl bg-white shadow-[0_1px_2px_rgb(0_0_0/0.04),0_8px_30px_-12px_rgb(0_0_0/0.12)];
+        @apply rounded-2xl bg-surface shadow-[0_1px_2px_rgb(0_0_0/0.04),0_8px_30px_-12px_rgb(0_0_0/0.12)];
     }
 
     .form-input {
-        @apply w-full rounded-xl border border-line bg-white px-4 py-3 text-ink placeholder:text-muted/60 transition focus:border-primary focus:ring-4 focus:ring-primary/15 focus:outline-none;
+        @apply w-full rounded-xl border border-line bg-surface px-4 py-3 text-ink placeholder:text-muted/60 transition focus:border-primary focus:ring-4 focus:ring-primary/15 focus:outline-none;
     }
 
     .form-label {
@@ -117,7 +118,7 @@
 
     /* Section background tones (Appearance → Background in the page builder) */
     .tone-white {
-        background-color: #fff;
+        background-color: var(--color-surface);
     }
 
     .tone-soft {

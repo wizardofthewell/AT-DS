@@ -9,6 +9,7 @@ use App\Models\Page;
 use App\Models\Service;
 use App\Models\SiteSetting;
 use App\Models\User;
+use App\Support\Theme;
 use Database\Seeders\StarterContentSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
@@ -138,6 +139,20 @@ class SiteTest extends TestCase
         SiteSetting::set('theme', ['primary' => '#123456']);
 
         $this->get('/')->assertSee('--site-primary: #123456', false);
+    }
+
+    public function test_dark_theme_preset_gets_a_tinted_surface(): void
+    {
+        SiteSetting::set('theme', Theme::PRESETS['midnight_sea']['colors']);
+
+        $this->get('/')->assertSee('--site-surface: color-mix(in oklab, #141d22 88%, white)', false);
+    }
+
+    public function test_light_theme_preset_keeps_a_white_surface(): void
+    {
+        SiteSetting::set('theme', Theme::PRESETS['lavender']['colors']);
+
+        $this->get('/')->assertSee('--site-surface: #ffffff', false);
     }
 
     public function test_branding_name_and_motto_render(): void

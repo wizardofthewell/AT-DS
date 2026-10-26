@@ -39,6 +39,46 @@ class Theme
             'label' => 'Warm Neutral',
             'colors' => ['primary' => '#6b625c', 'accent' => '#cdbfb4', 'background' => '#f7f4f1', 'text' => '#2f2b28', 'dark' => '#2f2b28'],
         ],
+        'lavender' => [
+            'label' => 'Lavender & Linen',
+            'colors' => ['primary' => '#6e6785', 'accent' => '#c7bcd9', 'background' => '#f6f4f8', 'text' => '#2e2a38', 'dark' => '#3a3350'],
+        ],
+        'terracotta' => [
+            'label' => 'Terracotta & Oat',
+            'colors' => ['primary' => '#a2573f', 'accent' => '#d8c3a0', 'background' => '#f8f3ea', 'text' => '#3a2a22', 'dark' => '#4a2a20'],
+        ],
+        'coastal' => [
+            'label' => 'Coastal Blue & Sand',
+            'colors' => ['primary' => '#3f6b7a', 'accent' => '#e2cf9f', 'background' => '#f4f7f6', 'text' => '#23323a', 'dark' => '#1f3a44'],
+        ],
+        'nightfall_moss' => [
+            'label' => 'Nightfall Moss & Brass (dark)',
+            'colors' => ['primary' => '#9fb08a', 'accent' => '#c4a77d', 'background' => '#1e2420', 'text' => '#ece8df', 'dark' => '#151a16'],
+        ],
+        'midnight_sea' => [
+            'label' => 'Midnight Sea & Seafoam (dark)',
+            'colors' => ['primary' => '#86bcae', 'accent' => '#c9a57e', 'background' => '#141d22', 'text' => '#e6eef0', 'dark' => '#0c1417'],
+        ],
+        'espresso' => [
+            'label' => 'Espresso & Rose Gold (dark)',
+            'colors' => ['primary' => '#d9a58f', 'accent' => '#b08a5e', 'background' => '#231b17', 'text' => '#f3e9e1', 'dark' => '#17110e'],
+        ],
+        'sunlit' => [
+            'label' => 'Sunlit Honey & Sage',
+            'colors' => ['primary' => '#8a6d2f', 'accent' => '#e8d3a2', 'background' => '#fbf8f0', 'text' => '#33302a', 'dark' => '#4b5a45'],
+        ],
+        'blush' => [
+            'label' => 'Blush & Eucalyptus',
+            'colors' => ['primary' => '#7d8f84', 'accent' => '#e8c4bb', 'background' => '#fbf5f3', 'text' => '#3a2f2d', 'dark' => '#4e5c53'],
+        ],
+        'ink_and_ivory' => [
+            'label' => 'Ink & Ivory (dark)',
+            'colors' => ['primary' => '#d8d0bd', 'accent' => '#8fa7b8', 'background' => '#16191d', 'text' => '#ebe9e4', 'dark' => '#0d0f12'],
+        ],
+        'forest_night' => [
+            'label' => 'Forest Night & Gold (dark)',
+            'colors' => ['primary' => '#e0b96b', 'accent' => '#5f8a6e', 'background' => '#17221c', 'text' => '#e9efe6', 'dark' => '#0f1812'],
+        ],
     ];
 
     public const HEADING_FONTS = [
@@ -69,11 +109,14 @@ class Theme
             default => '999px',
         };
 
+        $background = static::get('background');
+
         $vars = [
             '--site-primary' => $primary,
             '--site-on-primary' => static::readableOn($primary),
             '--site-accent' => static::get('accent'),
-            '--site-background' => static::get('background'),
+            '--site-background' => $background,
+            '--site-surface' => static::isDark($background) ? "color-mix(in oklab, $background 88%, white)" : '#ffffff',
             '--site-text' => static::get('text'),
             '--site-dark' => static::get('dark'),
             '--site-heading-font' => '"'.static::get('heading_font').'", Georgia, serif',
@@ -92,6 +135,14 @@ class Theme
             ->implode('|');
 
         return 'https://fonts.bunny.net/css?family='.$families.'&display=swap';
+    }
+
+    /**
+     * Whether the given background colour needs light text (a dark theme).
+     */
+    public static function isDark(string $hex): bool
+    {
+        return static::readableOn($hex) === '#ffffff';
     }
 
     /**
